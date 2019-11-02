@@ -16,7 +16,21 @@ ENS_SIZE=400
 #source /etc/profile.d/modules.sh
 #module load python-2.7.5
 
-cd ..
+cd ..  # to main directory
+
+###############################
+# If it does not exist, creat directories and subdirectories for the figures
+
+if [ ! -d figures ]; then
+	mkdir figures
+	mkdir figures/in_paper  # where to store the paper's figure
+	mkdir figures/USRB_all  # where the Python code produces figures for the whole basin
+	cd figures/USRB_all
+	mkdir discharge_in discharge_out resStorage  # create subdirectories where figures from th different fields will be stored
+	cd ../..  # back to main directory
+fi
+
+
 
 ###############################
 # Figure 5

@@ -1,19 +1,20 @@
-# UpperSnakeRiver_reservoirs_WBM
+# UpperSnakeRiver_reservoirs_WBM: code README
 
-This repository contains data and code corresponding to the paper "Coordination and Control: Limits in Standard Representations of Multi-Reservoir Operations in Hydrological Modeling" by Charles Rougé, Patrick M. Reed, Danielle S. Grogan, Shan Zuidema, Alexander Prusevich, Stanley Glidden, Jonathan R. Lamontagne, and Richard B. Lammers
+This directory contains the code used to generate the figure. It contains the following files:
 
-The code uses the results from the experiment described in Section 3 of the paper to draw Figures 5 to 10 as in the paper.
+1) Paper_figures_main.sh
+This is the main Bash executable, calling it from this directory produces Figures 5 to 10 from the paper.
 
-Repository overview:
+IMPORTANT: the code contains all the options enabling one to look at results across all five reservoirs described in the paper's Table 2: for this, just comment the lines at the end that clean the "figures/USRB_all" directory. The code is also purposefully geared to enable anyone to generate their own figures by changing the period they are interested in.
 
-=> Folder "code" contains the code to generate the figures from the paper. It has its own readme that details the files it contains. To generate figures, please follow these steps:
-1) download the whole repository
-2) open a (Linux) terminal and navigate to the "code" directory
-3) type "sh Paper_figures_main.sh" to generate all figures (PNG format). They will be stored in a "figures" directory created in the main directory.
+2) analyze.py
+This is the main Python routine that (1) calls. It gathers the all the necessary data to generate the figures. It then calls (3)
 
-=> Folder "data" contains 3 sub-folders (each have their own readme for details on how to read the data):
-1) Sub-folder "WBM_results_extracted" contains results from all 400 members of the ensemble of simulation described in the paper. Since each simulation could generate as much as 4GB of data, only the data immediately useful for figure generation has been uploaded here.
-2) Sub-folder "Morris_indices" lists the results from using the SALib python library on the data from "WBM_results_extracted"
-3) Sub-folder "reservoirs" lists the data on the reservoirs that are the main focus of this paper, including historical data used to generate the figures.
+3) plotter_morris.py
+This is what produces the figures.
 
-Licensed under the GNU Lesser General Public License.
+4) util.py
+This Python programme contains auxiliary functions that (2) and (3) need.
+
+5) problem.txt
+This text file contains the reservoir rule variables described in Section 2 of the paper. This information is used for plotting these variables on the Figures with the correct name.

@@ -16,4 +16,10 @@ Repository overview:
 2) Sub-folder "Morris_indices" lists the results from using the SALib python library on the data from "WBM_results_extracted"
 3) Sub-folder "reservoirs" lists the data on the reservoirs that are the main focus of this paper, including historical data used to generate the figures.
 
+
+NOTE: the three variables this repository looks at and analyzes are noted as in the Water Balance Model (WBM), they are:
+discharge_in: reservoir inflow
+discharge_out: reservoir outflow (release + spill)
+resStorage: end-of-period reservoir storage (with a daily timestep)
+
 Licensed under the GNU Lesser General Public License.
