@@ -1,0 +1,4 @@
+Field,Gage,Reservoir,Area,Name,Unit,Plot_now
+discharge_in,0,1,0,Inflow,$m^3/s$,1
+discharge_out,0,1,0,Release,$m^3/s$,1
+resStorage,0,1,0,Storage,Millions $m^3$,1
