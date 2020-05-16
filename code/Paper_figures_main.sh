@@ -6,12 +6,12 @@
 # Which figures to plot
 # Main body
 FIG5=0
-FIG6=1
+FIG6=0
 FIG7=0
 FIG8=0
 FIG9=0
 FIG10=0
-FIG11=0
+FIG11=1
 # Supplementary material
 SUPP1=0
 SUPP2=0
@@ -102,6 +102,13 @@ fi
 # Figure 6
 
 if [ $FIG6 = 1 ]; then
+
+  # Run python code
+  python code/figure6.py
+
+  # Get panels in right folder
+  mv Aug_2013.png figures/in_paper/Fig6_a.png
+  mv Apr_2011.png figures/in_paper/Fig6_b.png
 
 fi
 
@@ -198,6 +205,13 @@ if [ $FIG9 = 1 ] | [ $FIG10 = 1 ]; then
 	  mv figures/USRB_all/resStorage/Palisades_2011_1.png figures/in_paper/Fig10_a.png
 	  mv figures/USRB_all/discharge_out/Palisades_2011_1.png figures/in_paper/Fig10_b.png
 	fi
+
+fi
+
+###############################
+# Figure 11
+
+if [ $FIG11 = 1 ]; then
 
 fi
 

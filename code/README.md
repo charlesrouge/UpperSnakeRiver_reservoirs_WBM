@@ -18,3 +18,6 @@ This Python programme contains auxiliary functions that (2) and (3) need.
 
 5) problem.txt
 This text file contains the reservoir rule variables described in Section 2 of the paper. This information is used for plotting these variables on the Figures with the correct name.
+
+6) figure6.py
+Produces Figure 6

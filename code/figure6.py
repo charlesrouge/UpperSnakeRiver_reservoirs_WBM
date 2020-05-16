@@ -3,6 +3,7 @@ from datetime import datetime
 from matplotlib import pyplot as plt
 import numpy as np
 
+# This code produces the panels for Figure 6 of this paper
 
 # Inputs are:
 #    file_path: the complete path of the file containing the data
@@ -59,7 +60,7 @@ def plot_all():
 
     # First the 2012-2013 drought
     # August 2013 monthly totals
-    [aw, rel] = period_release('../../data/reservoirs/WY9999.csv', [8, 1], 31, 8)
+    [aw, rel] = period_release('data/reservoirs/WY9999.csv', [8, 1], 31, 8)
     # Plot only if releases are maximal in 2013
     if rel[4] == np.amax(rel):
         print('Figure for drought in 2013: August available water and release totals')
@@ -78,7 +79,7 @@ def plot_all():
 
     # Second the 2011 flood
     # April monthly totals
-    [aw, rel] = period_release('../../data/reservoirs/WY9999.csv', [4, 1], 30, 8)
+    [aw, rel] = period_release('data/reservoirs/WY9999.csv', [4, 1], 30, 8)
     # Plot only if releases are maximal in 2011
     if rel[2] == np.amax(rel):
         print('Figure for flooding in 2011: April available water and release totals')
