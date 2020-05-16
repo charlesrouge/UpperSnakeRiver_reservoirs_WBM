@@ -58,8 +58,7 @@ def period_release(file_path, day, window_length, nbyears):
 def plot_all():
 
     # First the 2012-2013 drought
-
-    # August monthly totals
+    # August 2013 monthly totals
     [aw, rel] = period_release('../../data/reservoirs/WY9999.csv', [8, 1], 31, 8)
     # Plot only if releases are maximal in 2013
     if rel[4] == np.amax(rel):
@@ -77,24 +76,7 @@ def plot_all():
         fig.savefig('Aug_2013.png')
         fig.clf()
 
-    # August 15 situation
-    [aw, rel] = period_release('../../data/reservoirs/WY9999.csv', [8, 15], 1, 8)
-    # Plot only if releases are maximal in 2013
-    if rel[4] == np.amax(rel):
-        print('Figure for drought in 2013: August 15 available water and release')
-        # Plot
-        fig = plt.figure()
-        ax = fig.add_subplot(1, 1, 1)
-        ax.scatter(aw, rel)
-        ax.set_xlabel("Water availability (Millions $m^3$)", size=12)
-        ax.set_ylabel("Daily release (Millions $m^3$)", size=12)
-        ax.set_title("c) August 15: for years 2009-2016", size=15)
-        ax.tick_params(labelsize=12)
-        fig.savefig('Aug15_2013.png')
-        fig.clf()
-
     # Second the 2011 flood
-
     # April monthly totals
     [aw, rel] = period_release('../../data/reservoirs/WY9999.csv', [4, 1], 30, 8)
     # Plot only if releases are maximal in 2011
@@ -113,23 +95,8 @@ def plot_all():
         fig.savefig('Apr_2011.png')
         fig.clf()
 
-    # April 15 situation
-    [aw, rel] = period_release('../../data/reservoirs/WY9999.csv', [4, 15], 1, 8)
-    # Plot only if releases are maximal in 2011
-    if rel[2] == np.amax(rel):
-        print('Figure for flooding in 2011: April 15 available water and release')
-        # Plot
-        fig = plt.figure()
-        ax = fig.add_subplot(1, 1, 1)
-        ax.scatter(aw, rel)
-        ax.set_xlabel("Water availability (Millions $m^3$)", size=12)
-        ax.set_ylabel("Daily release (Millions $m^3$)", size=12)
-        ax.set_title("d) April 15: for years 2009-2016", size=15)
-        ax.tick_params(labelsize=12)
-        fig.savefig('Apr15_2011.png')
-        fig.clf()
-
     return None
 
 
-# plot_all()
+# Plot the panels of Figure 6
+plot_all()
