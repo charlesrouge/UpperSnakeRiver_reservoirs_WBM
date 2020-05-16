@@ -20,9 +20,9 @@ def offline_model(data_path, ens_size):
     starting_day = '03/01/2011'  # First day of flooding analysis
     window_length = 153  # Number of days to plot
     routing_lag = 1  # Between two reservoirs
-    res_names = ['Jackson', 'Palisades', 'American_Falls']
+    res_names = ['Jackson', 'Palisades']
     nb_res = len(res_names)  # Number of reservoirs in cascade
-    s_max = [1.078E9, 1.503E9, 2.145E9]  # Maximal storage of reservoirs
+    s_max = [1.078E9, 1.503E9]  # Maximal storage of reservoirs
 
     # Get simulation data
     [sim_inflows, sim_outflows, sim_storage, date_num] = \
@@ -30,7 +30,7 @@ def offline_model(data_path, ens_size):
 
     # Flood release policy
     policy_start = '03/25/2011'  # Day the flood release policy starts
-    policy_releases = [200, 582, 1000]  # Imposed releases (barring full / empty reservoir)
+    policy_releases = [200, 582]  # Imposed releases (barring full / empty reservoir)
     # Date conversion for the day the policy starts
     date_start = datetime.strptime(policy_start, "%m/%d/%Y")
     index_start = int(date2num(date_start, units='days since 1900-01-01', calendar='standard') - date_num)
@@ -72,16 +72,6 @@ def offline_model(data_path, ens_size):
             [sur_inflows[t, 1, n], sur_outflows[t, 1, n], sur_storage[t + 1, 1, n], inflow_deficit[1, n]] = \
                 offline_util.offline_reservoir_balance(sim_inflows[t, 1, n], sur_inflows[t, 1, n], sim_outflows[t, 1, n],
                 sur_outflows[t, 1, n], sim_storage[t:t + 2, 1, n], sur_storage[t, 1, n], s_max[1], inflow_deficit[1, n])
-
-            # Palisades to American Falls routing
-            if t >= routing_lag:
-                sur_inflows[t, 2, n] = sur_inflows[t, 2, n] + (sur_outflows[t - routing_lag, 1, n] -
-                                                               sim_outflows[t - routing_lag, 1, n])
-
-            # American Falls one-step balance
-            [sur_inflows[t, 2, n], sur_outflows[t, 2, n], sur_storage[t + 1, 2, n], inflow_deficit[2, n]] = \
-                offline_util.offline_reservoir_balance(sim_inflows[t, 2, n], sur_inflows[t, 2, n], sim_outflows[t, 2, n],
-                sur_outflows[t, 2, n], sim_storage[t:t + 2, 2, n], sur_storage[t, 2, n], s_max[2], inflow_deficit[2, n])
 
     # Only returning the quartiles
     sur_in = util.quartiles(sur_inflows)
@@ -135,3 +125,5 @@ def comparison_plot(res_name, var_name, unit, sim_var, sur_var, bonus_param):
 
     return None
 
+# Executing code above
+offline_model('data', 400)

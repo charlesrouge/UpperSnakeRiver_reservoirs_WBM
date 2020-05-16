@@ -213,6 +213,15 @@ fi
 
 if [ $FIG11 = 1 ]; then
 
+  # Run python code
+  python code/offline_flood.py
+
+  # Get panels in right folder
+  mv Jackson_Release.png figures/in_paper/Fig11_a.png
+  mv Jackson_Storage.png figures/in_paper/Fig11_b.png
+  mv Palisades_Release.png figures/in_paper/Fig11_c.png
+  mv Palisades_Storage.png figures/in_paper/Fig11_d.png
+
 fi
 
 ###############################
@@ -221,4 +230,5 @@ rm analysis_dates.txt
 rm figures/USRB_all/resStorage/*
 rm figures/USRB_all/discharge_in/*
 rm figures/USRB_all/discharge_out/*
+rm *.png
 
