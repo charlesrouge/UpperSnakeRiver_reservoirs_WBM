@@ -21,3 +21,6 @@ This text file contains the reservoir rule variables described in Section 2 of t
 
 6) figure6.py
 Produces Figure 6
+
+7) offline_drought.py, offline_flood.py, offline_util.py
+Python code to run the offline water balance model experiments that complete the paper.
