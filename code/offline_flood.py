@@ -35,7 +35,7 @@ def offline_model(data_path, ens_size):
     date_start = datetime.strptime(policy_start, "%m/%d/%Y")
     index_start = int(date2num(date_start, units='days since 1900-01-01', calendar='standard') - date_num)
 
-    # Initialise surrogate results
+    # Initialise offline model results
     sur_inflows = np.zeros(sim_inflows.shape)
     sur_outflows = np.zeros(sim_outflows.shape)
     sur_storage = np.zeros(sim_storage.shape)
@@ -100,7 +100,7 @@ def comparison_plot(res_name, var_name, unit, sim_var, sur_var, bonus_param):
 
     # Quantities to plot and legend
     handles = []  # Initialize legend
-    for i in range(5):  # Simulated and surrogate time series
+    for i in range(5):  # Simulated and offline model time series
         simul, = ax.plot(sim_var[:, i], 'k', label='Simulated')
         surrog, = ax.plot(sur_var[:, i], ':b', label='Offline model')
     handles.append(simul)
@@ -119,7 +119,7 @@ def comparison_plot(res_name, var_name, unit, sim_var, sur_var, bonus_param):
     ax.set_xlim(0, 152)
     ax.set_ylim(0, 1.1 * max(np.amax(sim_var), np.amax(sur_var)))
     ax.set_ylabel(var_name + ' (' + unit + ')', size=14)
-    # ax.set_title('Min., max. and quartiles, simulated vs. surrogate')
+    # ax.set_title('Min., max. and quartiles, simulated vs. offline model')
     fig.savefig(res_name + '_' + var_name + '.png')
     fig.clf()
 

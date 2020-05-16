@@ -5,16 +5,16 @@
 
 # Which figures to plot
 # Main body
-FIG5=0
-FIG6=0
-FIG7=0
-FIG8=0
-FIG9=0
-FIG10=0
+FIG5=1
+FIG6=1
+FIG7=1
+FIG8=1
+FIG9=1
+FIG10=1
 FIG11=1
 # Supplementary material
-SUPP1=0
-SUPP2=0
+SUPP1=1
+SUPP2=1
 
 # Morris ensemble size in paper
 ENS_SIZE=400
@@ -74,8 +74,8 @@ if [ $FIG5 = 1 ] | [ $SUPP2 = 1 ]; then
 	# Get panels
 
 	if [ $FIG5 = 1 ]; then
-	  mv figures/USRB_all/resStorage/Jackson_9-16_1.png figures/in_paper/Fig5_a.png
-	  mv figures/USRB_all/discharge_out/Jackson_9-16_1.png figures/in_paper/Fig5_b.png
+	  cp figures/USRB_all/resStorage/Jackson_9-16_1.png figures/in_paper/Fig5_a.png
+	  cp figures/USRB_all/discharge_out/Jackson_9-16_1.png figures/in_paper/Fig5_b.png
 	fi
 
 	if [ $SUPP2 = 1 ]; then
@@ -221,6 +221,24 @@ if [ $FIG11 = 1 ]; then
   mv Jackson_Storage.png figures/in_paper/Fig11_b.png
   mv Palisades_Release.png figures/in_paper/Fig11_c.png
   mv Palisades_Storage.png figures/in_paper/Fig11_d.png
+
+fi
+
+###############################
+# Figure 11
+
+if [ $SUPP1 = 1 ]; then
+
+  # Run python code
+  python code/offline_drought.py
+
+  # Get panels in right folder
+  mv Jackson_Storage_1.png figures/supp_info/SI1_a.png
+  mv Jackson_Storage_2.png figures/supp_info/SI1_b.png
+  mv Palisades_Storage_1.png figures/supp_info/SI1_c.png
+  mv Palisades_Storage_2.png figures/supp_info/SI1_d.png
+  mv American_Falls_Storage_1.png figures/supp_info/SI1_e.png
+  mv American_Falls_Storage_2.png figures/supp_info/SI1_f.png
 
 fi
 
